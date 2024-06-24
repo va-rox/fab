@@ -1,0 +1,16 @@
+
+*** TOP LEVEL CELL: Nand{lay}
+Mnmos@0 net@95 A AB gnd NMOS L=0.4U W=2U AS=2.953P AD=1.38P PS=9.4U PD=5.2U
+Mnmos@1 gnd B net@95 gnd NMOS L=0.4U W=2U AS=1.38P AD=13.62P PS=5.2U PD=33.4U
+Mpmos@0 AB A vdd vdd PMOS L=0.4U W=2U AS=8.62P AD=2.953P PS=22.4U PD=9.4U
+Mpmos@1 vdd B AB vdd PMOS L=0.4U W=2U AS=2.953P AD=8.62P PS=9.4U PD=22.4U
+
+* Spice Code nodes in cell cell 'Nand{lay}'
+vdd vdd 0 DC 5
+va A 0 DC pwl 10n 0 20n 5 50n 5 60n 0 90n 0 100n 5 130n 5 140n 0 170n 0 180n 5
+vb B 0 DC pwl 10n 0 20n 5 100n 5 110n 0
+.measure tran tf trig v(AB) val=4.5 fall=1 td=4ns targ v(AB) val=0.5 fall=1
+.measure tran tr trig v(AB) val=0.5 rise=1 td=4ns targ v(AB) val=4.5 rise=1
+.tran 200n
+.include C:\Users\Vaasudeva\Documents\electric\180nm2.txt
+.END

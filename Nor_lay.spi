@@ -1,0 +1,17 @@
+
+
+*** TOP LEVEL CELL: Nor{lay}
+Mnmos@0 AB A gnd gnd NMOS L=0.4U W=2U AS=7.6P AD=2.613P PS=17.6U PD=7.8U
+Mnmos@1 gnd B AB gnd NMOS L=0.4U W=2U AS=2.613P AD=7.6P PS=7.8U PD=17.6U
+Mpmos@0 net@20 A vdd vdd PMOS L=0.4U W=2U AS=18.6P AD=1.38P PS=29.8U PD=5.2U
+Mpmos@1 AB B net@20 vdd PMOS L=0.4U W=2U AS=1.38P AD=2.613P PS=5.2U PD=7.8U
+
+* Spice Code nodes in cell cell 'Nor{lay}'
+vdd vdd 0 DC 5
+va A 0 DC pwl 10n 0 20n 5 50n 5 60n 0 90n 0 100n 5 130n 5 140n 0 170n 0 180n 5
+vb B 0 DC pwl 10n 0 20n 5 100n 5 110n 0
+.measure tran tf trig v(AB) val=4.5 fall=1 td=4ns targ v(AB) val=0.5 fall=1
+.measure tran tr trig v(AB) val=0.5 rise=1 td=4ns targ v(AB) val=4.5 rise=1
+.tran 200n
+.include C:\Users\Vaasudeva\Documents\electric\180nm2.txt
+.END
